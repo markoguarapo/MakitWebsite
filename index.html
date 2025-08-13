@@ -384,6 +384,79 @@
         .partners-slider .slide:hover img {
             filter: grayscale(0%); /* Opcional: muestra el color al pasar el ratón */
         }
+        /* ============================================= */
+        /* === ESTILOS PARA EL MENÚ DE HAMBURGUESA === */
+        /* ============================================= */
+        .hamburger-menu {
+            display: none; /* Oculto por defecto en escritorio */
+            flex-direction: column;
+            justify-content: space-around;
+            width: 30px;
+            height: 25px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 101; /* Debe estar por encima del header */
+        }
+
+        .hamburger-menu .bar {
+            height: 3px;
+            width: 100%;
+            background-color: var(--primary-color);
+            border-radius: 10px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* --- Estilos para la X cuando el menú está abierto --- */
+        .hamburger-menu.is-active .bar:nth-child(1) {
+            transform: translateY(11px) rotate(45deg);
+        }
+        .hamburger-menu.is-active .bar:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger-menu.is-active .bar:nth-child(3) {
+            transform: translateY(-11px) rotate(-45deg);
+        }
+
+        /* --- Estilos para el Menú Desplegable (Móvil) --- */
+        @media (max-width: 768px) {
+            .main-nav ul {
+                position: fixed;
+                top: 0;
+                right: 0;
+                width: 70%; /* Ancho del panel del menú */
+                height: 100vh;
+                background-color: #1E1E1E;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 2rem;
+                transform: translateX(100%); /* Oculto fuera de la pantalla */
+                transition: transform 0.3s ease-in-out;
+            }
+
+            .main-nav ul.nav-active {
+                transform: translateX(0); /* Lo trae a la pantalla */
+            }
+
+            .main-nav ul li {
+                margin-left: 0;
+            }
+
+            .hamburger-menu {
+                display: flex; /* Se muestra en móvil */
+            }
+            
+            /* Ocultamos los links de la barra de navegación original en móvil */
+            .main-nav {
+                display: none;
+            }
+            /* Necesitamos volver a mostrarlo cuando se despliega el menú */
+            .main-nav.nav-active {
+                display: flex;
+            }
+        }
     </style>
 </head>
 <body>
@@ -394,7 +467,7 @@
                 <img src="https://makitpublicdata.blob.core.windows.net/makitpublicdata/Logo%20MakIT%20grey.png" alt="Logo MakIT">
             </a>
             <nav class="main-nav">
-                <ul>
+                <ul id="mobile-nav">
                     <li><a href="#hero">Inicio</a></li>
                     <li><a href="#services">Servicios</a></li>
                     <li><a href="#why-us">Nosotros</a></li>
@@ -402,6 +475,11 @@
                     <li><a href="#contact">Contacto</a></li>
                 </ul>
             </nav>
+            <button class="hamburger-menu" id="hamburger-button" aria-label="Abrir menú">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </button>
         </div>
     </header>
 
