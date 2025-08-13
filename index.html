@@ -612,6 +612,28 @@
             <p><strong>Integramos su tecnología. Simplificamos su negocio.</strong></p>
         </div>
     </footer>
+    <script>
+        const hamburgerButton = document.getElementById('hamburger-button');
+        const mobileNav = document.getElementById('mobile-nav').parentElement; // Obtenemos el <nav>
+        const navLinks = document.querySelectorAll('#mobile-nav li a');
 
+        // Función para abrir/cerrar el menú
+        function toggleMenu() {
+            hamburgerButton.classList.toggle('is-active');
+            mobileNav.classList.toggle('nav-active');
+        }
+
+        // Abrir/cerrar menú al hacer clic en la hamburguesa
+        hamburgerButton.addEventListener('click', toggleMenu);
+
+        // Cerrar el menú al hacer clic en un enlace (útil para one-page sites)
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (mobileNav.classList.contains('nav-active')) {
+                    toggleMenu();
+                }
+            });
+        });
+    </script>
 </body>
 </html>
