@@ -61,7 +61,7 @@
         }
 
         .logo img {
-            height: 70px;
+            height: 100px;
             /* NOTA: Pida su logo en PNG transparente para un mejor resultado */
         }
 
@@ -92,7 +92,7 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding-top: 60px;
+            padding-top: 120px;
             background: linear-gradient(rgba(18, 18, 18, 0.7), rgba(18, 18, 18, 0.7)), url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=3600') no-repeat center center/cover;
         }
 
@@ -270,7 +270,7 @@
         }
         
         footer .logo-footer img {
-            height: 70px;
+            height: 40px;
             margin-bottom: 1rem;
             /* Invierte los colores del logo para que se vea blanco sobre fondo oscuro */
             filter: brightness(0) invert(1);
@@ -309,6 +309,81 @@
                 grid-template-columns: 1fr;
             }
         }
+      /* --- Estilos para la sección de Marcas (Slider) --- */
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-240px * 7)); } /* 200px de ancho por logo * 7 logos */
+        }
+
+        .partners-section-light {
+            background-color: #f4f4f4; /* Fondo gris claro */
+            padding: 4rem 0;
+        }
+
+        .partners-section-light .section-title {
+            color: #333333; /* Color oscuro para el título para que sea visible */
+        }
+
+        .partners-slider {
+            background: white;
+            box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.125);
+            height: 120px; /* Altura del contenedor del slider */
+            margin: auto;
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+        }
+
+        .partners-slider::before,
+        .partners-slider::after {
+            background: linear-gradient(to right, white 0%, rgba(255, 255, 255, 0) 100%);
+            content: "";
+            height: 120px;
+            position: absolute;
+            width: 15%;
+            z-index: 2;
+        }
+
+        .partners-slider::before {
+            left: 0;
+            top: 0;
+        }
+
+        .partners-slider::after {
+            right: 0;
+            top: 0;
+            transform: rotateZ(180deg);
+        }
+
+        .partners-slider .partners-slide-track {
+            animation: scroll 30s linear infinite; /* Duración de la animación */
+            display: flex;
+            width: calc(240px * 14);
+        }
+        .partners-slider:hover .partners-slide-track {
+            animation-play-state: paused; /* Pausa la animación al pasar el ratón */
+        }
+
+        .partners-slider .slide {
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+            margin: 0 40px;
+        }
+        
+        .partners-slider .slide img {
+            max-height: 60px; /* Altura máxima para todos los logos */
+            max-width: 160px;  /* NUEVO: Ancho máximo para evitar que se desborden */
+            width: auto;      /* Ancho automático para mantener la proporción */
+            filter: grayscale(100%); /* Opcional: logos en escala de grises para uniformidad */
+            transition: filter 0.3s ease;
+        }
+
+        .partners-slider .slide:hover img {
+            filter: grayscale(0%); /* Opcional: muestra el color al pasar el ratón */
+        }
     </style>
 </head>
 <body>
@@ -323,6 +398,7 @@
                     <li><a href="#hero">Inicio</a></li>
                     <li><a href="#services">Servicios</a></li>
                     <li><a href="#why-us">Nosotros</a></li>
+                    <li><a href="#partners">Alianzas</a></li>
                     <li><a href="#contact">Contacto</a></li>
                 </ul>
             </nav>
@@ -412,20 +488,35 @@
             </div>
         </section>
 
+        <section id="partners" class="partners-section-light">
+            <div class="container">
+                <h2 class="section-title">Nuestras Alianzas Estratégicas</h2>
+                
+                <div class="partners-slider">
+                    <div class="partners-slide-track">
+                        <div class="slide"><img src="https://makitpublicdata.blob.core.windows.net/makitpublicdata/Microsoft.png" alt="Logo de Microsoft" /></div>
+                        <div class="slide"><img src="https://makitpublicdata.blob.core.windows.net/makitpublicdata/Fortinet.png" alt="Logo de Fortinet" /></div>
+                        <div class="slide"><img src="https://makitpublicdata.blob.core.windows.net/makitpublicdata/Unifi.png" alt="Logo de Ubiquiti Unifi" /></div>
+                        <div class="slide"><img src="https://makitpublicdata.blob.core.windows.net/makitpublicdata/HPE.png" alt="Logo de HPE" /></div>
+                        <div class="slide"><img src="https://makitpublicdata.blob.core.windows.net/makitpublicdata/Huawei.png" alt="Logo de Huawei" /></div>
+                        <div class="slide"><img src="https://makitpublicdata.blob.core.windows.net/makitpublicdata/Grandstream.png" alt="Logo de Grandstream" /></div>
+                        <div class="slide"><img src="https://makitpublicdata.blob.core.windows.net/makitpublicdata/Hikvision.png" alt="Logo de Hikvision" /></div>
+
+                        <div class="slide"><img src="https://makitpublicdata.blob.core.windows.net/makitpublicdata/Microsoft.png" alt="Logo de Microsoft" /></div>
+                        <div class="slide"><img src="https://makitpublicdata.blob.core.windows.net/makitpublicdata/Fortinet.png" alt="Logo de Fortinet" /></div>
+                        <div class="slide"><img src="https://makitpublicdata.blob.core.windows.net/makitpublicdata/Unifi.png" alt="Logo de Ubiquiti Unifi" /></div>
+                        <div class="slide"><img src="https://makitpublicdata.blob.core.windows.net/makitpublicdata/HPE.png" alt="Logo de HPE" /></div>
+                        <div class="slide"><img src="https://makitpublicdata.blob.core.windows.net/makitpublicdata/Huawei.png" alt="Logo de Huawei" /></div>
+                        <div class="slide"><img src="https://makitpublicdata.blob.core.windows.net/makitpublicdata/Grandstream.png" alt="Logo de Grandstream" /></div>
+                        <div class="slide"><img src="https://makitpublicdata.blob.core.windows.net/makitpublicdata/Hikvision.png" alt="Logo de Hikvision" /></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section id="contact">
             <div class="container">
-                <h2 class="section-title">Hablemos de su Proyecto</h2>
-                <form class="contact-form" action="https://formspree.io/f/YOUR_UNIQUE_FORM_ID" method="POST"> <div class="form-group">
-                        <input type="text" name="name" placeholder="Su Nombre" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" name="email" placeholder="Su Correo Electrónico" required>
-                    </div>
-                    <div class="form-group">
-                        <textarea name="message" rows="6" placeholder="Cuéntenos sobre sus necesidades..." required></textarea>
-                    </div>
-                    <button type="submit" class="btn">Enviar Mensaje</button>
-                </form>
+                <script type="text/javascript" src="https://form.jotform.com/jsform/252239323842658"></script>
                 <div class="contact-info">
                     <p>O contáctenos directamente:</p>
                     <p><strong>Email:</strong> <a href="mailto:info@makitgroup.com">info@makitgroup.com</a> | <strong>Teléfono:</strong> <a href="tel:+584122402973">+58 412-2402973</a> | <strong>Ubicación:</strong> Caracas, Venezuela</p>
