@@ -715,25 +715,5 @@
             <p><strong>Dedicados a su tecnología. Simplificamos su negocio.</strong></p>
         </div>
     </footer>
-    <script>
-        const hamburgerButton = document.getElementById('hamburger-button');
-        const mobileNavPanel = document.getElementById('main-nav-panel'); // Apuntamos directamente al panel
-        const navLinks = document.querySelectorAll('#mobile-nav li a');
-
-        function toggleMenu() {
-            hamburgerButton.classList.toggle('is-active');
-            mobileNavPanel.classList.toggle('nav-active'); // Activamos el panel
-        }
-
-        hamburgerButton.addEventListener('click', toggleMenu);
-
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                if (mobileNavPanel.classList.contains('nav-active')) {
-                    toggleMenu();
-                }
-            });
-        });
-    </script>
 </body>
 </html>
