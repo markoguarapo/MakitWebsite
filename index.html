@@ -260,7 +260,6 @@
             color: var(--accent-color);
             text-decoration: none;
         }
-
         /* --- Footer --- */
         footer {
             background: var(--bg-color);
@@ -305,7 +304,75 @@
                 grid-template-columns: 1fr;
             }
         }
-      /* --- Estilos para la sección de Marcas (Slider) --- */
+        /* --- Sección de Clientes Destacados (Slider) --- */
+        @keyframes scroll-clientes {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-250px * 4)); } /* Ancho promedio por logo * número de logos originales */
+        }
+
+        #clientes {
+            background: var(--surface-color);
+        }
+
+        .clientes-slider {
+            height: 120px;
+            margin: auto;
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+        }
+
+        .clientes-slider::before,
+        .clientes-slider::after {
+            background: linear-gradient(to right, var(--surface-color) 0%, rgba(30, 30, 30, 0) 100%);
+            content: "";
+            height: 120px;
+            position: absolute;
+            width: 15%;
+            z-index: 2;
+        }
+
+        .clientes-slider::before {
+            left: 0;
+            top: 0;
+        }
+
+        .clientes-slider::after {
+            right: 0;
+            top: 0;
+            transform: rotateZ(180deg);
+        }
+
+        .clientes-slider .clientes-slide-track {
+            animation: scroll-clientes 20s linear infinite;
+            display: flex;
+            width: calc(250px * 8); /* Ancho promedio * total de logos */
+        }
+
+        .clientes-slider:hover .clientes-slide-track {
+            animation-play-state: paused;
+        }
+
+        .clientes-slider .cliente-slide {
+            height: 120px;
+            /* 'width' fijo eliminado para dar flexibilidad */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 25px; /* Se añade margen para espaciar los logos */
+        }
+        
+        .clientes-slider .cliente-slide img {
+            max-height: 70px;
+            max-width: 200px; /* Controlamos el tamaño máximo de la imagen */
+            width: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .clientes-slider .cliente-slide:hover img {
+            transform: scale(1.1);
+        }
+        /* --- Estilos para la sección de Marcas (Slider) --- */
         @keyframes scroll {
             0% { transform: translateX(0); }
             100% { transform: translateX(calc(-240px * 7)); } /* 200px de ancho por logo * 7 logos */
@@ -370,15 +437,16 @@
         }
         
         .partners-slider .slide img {
-            max-height: 60px; /* Altura máxima para todos los logos */
-            max-width: 160px;  /* NUEVO: Ancho máximo para evitar que se desborden */
-            width: auto;      /* Ancho automático para mantener la proporción */
-            filter: grayscale(100%); /* Opcional: logos en escala de grises para uniformidad */
-            transition: filter 0.3s ease;
+            max-height: 60px;
+            max-width: 160px;
+            width: auto;
+            /* La línea 'filter' ha sido eliminada para mostrar siempre el color */
+            transition: transform 0.3s ease; /* Cambiamos la transición a transform */
         }
 
         .partners-slider .slide:hover img {
-            filter: grayscale(0%); /* Opcional: muestra el color al pasar el ratón */
+            /* Eliminamos el filter y dejamos solo el efecto de escala */
+            transform: scale(1.1);
         }
          /* ========================================================= */
         /* ===          ESTILOS PARA SECCIÓN DE OFERTA         === */
@@ -537,9 +605,9 @@
             </a>
             <nav class="main-nav" id="main-nav-panel"> <ul id="mobile-nav">
                     <li><a href="#hero">Inicio</a></li>
-                    <li><a href="#services">Servicios</a></li>
                     <li><a href="#why-us">Nosotros</a></li>
-                    <li><a href="#partners">Alianzas</a></li>
+                    <li><a href="#services">Servicios</a></li>
+                    <li><a href="#clientes">Clientes</a></li>
                     <li><a href="#contact">Contacto</a></li>
                 </ul>
             </nav>
@@ -625,6 +693,42 @@
             </div>
         </section>
 
+        <section id="why-us">
+            <div class="container">
+                <h2 class="section-title">¿Por Qué Elegir MakIT?</h2>
+                <div class="why-us-grid">
+                    <div class="why-us-item">
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15.29V17c-2.76 0-5-2.24-5-5s2.24-5 5-5v-.29c-3.31.45-6 3.2-6 6.29 0 3.32 2.68 6 6 6zm2 0c3.32 0 6-2.68 6-6 0-3.09-2.69-5.84-6-6.29V12c2.76 0 5 2.24 5 5s-2.24 5-5 5v.29z"/></svg>
+                        <div>
+                            <h3>Visión Integral 360°</h3>
+                            <p>Ofrecemos una solución unificada para toda su infraestructura. Centralice la gestión de su tecnología y gane en eficiencia y cohesión.</p>
+                        </div>
+                    </div>
+                    <div class="why-us-item">
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 11.55C9.64 9.35 6.48 8 3 8v11c3.48 0 6.64 1.35 9 3.55 2.36-2.19 5.52-3.55 9-3.55V8c-3.48 0-6.64 1.35-9 3.55zM12 8c1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3 1.34 3 3 3z"/></svg>
+                        <div>
+                            <h3>Experiencia Comprobada</h3>
+                            <p>Con más de 10 años de experiencia, desde 2015 hemos consolidado un historial de éxito implementando soluciones robustas para una diversa cartera de clientes.</p>
+                        </div>
+                    </div>
+                    <div class="why-us-item">
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/></svg>
+                        <div>
+                            <h3>Soluciones a la Medida</h3>
+                            <p>Entendemos que cada negocio es único. Adaptamos nuestros servicios, ya sea con personal dedicado o soporte remoto, para ajustarnos a sus necesidades y presupuesto.</p>
+                        </div>
+                    </div>
+                    <div class="why-us-item">
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10.09 15.59L11.5 17l5-5-5-5-1.41 1.41L12.67 11H3v2h9.67l-2.58 2.59zM19 3H5c-1.11 0-2 .9-2 2v4h2V5h14v14H5v-4H3v4c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/></svg>
+                        <div>
+                            <h3>Más que un Proveedor, un Socio</h3>
+                            <p>Nos integramos a su operación para ser un verdadero socio tecnológico. Nuestro enfoque proactivo se centra en optimizar sus sistemas para que su tecnología sea siempre una palanca para el crecimiento.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section id="services">
             <div class="container">
                 <h2 class="section-title">Un Portafolio de Soluciones 360°</h2>
@@ -662,43 +766,29 @@
                 </div>
             </div>
         </section>
-
-        <section id="why-us">
+        <section id="clientes">
             <div class="container">
-                <h2 class="section-title">¿Por Qué Elegir MakIT?</h2>
-                <div class="why-us-grid">
-                    <div class="why-us-item">
-                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15.29V17c-2.76 0-5-2.24-5-5s2.24-5 5-5v-.29c-3.31.45-6 3.2-6 6.29 0 3.32 2.68 6 6 6zm2 0c3.32 0 6-2.68 6-6 0-3.09-2.69-5.84-6-6.29V12c2.76 0 5 2.24 5 5s-2.24 5-5 5v.29z"/></svg>
-                        <div>
-                            <h3>Visión Integral 360°</h3>
-                            <p>Ofrecemos una solución unificada para toda su infraestructura. Centralice la gestión de su tecnología y gane en eficiencia y cohesión.</p>
-                        </div>
-                    </div>
-                    <div class="why-us-item">
-                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 11.55C9.64 9.35 6.48 8 3 8v11c3.48 0 6.64 1.35 9 3.55 2.36-2.19 5.52-3.55 9-3.55V8c-3.48 0-6.64 1.35-9 3.55zM12 8c1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3 1.34 3 3 3z"/></svg>
-                        <div>
-                            <h3>Experiencia Comprobada</h3>
-                            <p>Con más de 10 años de experiencia, desde 2015 hemos consolidado un historial de éxito implementando soluciones robustas para una diversa cartera de clientes.</p>
-                        </div>
-                    </div>
-                    <div class="why-us-item">
-                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/></svg>
-                        <div>
-                            <h3>Soluciones a la Medida</h3>
-                            <p>Entendemos que cada negocio es único. Adaptamos nuestros servicios, ya sea con personal dedicado o soporte remoto, para ajustarnos a sus necesidades y presupuesto.</p>
-                        </div>
-                    </div>
-                    <div class="why-us-item">
-                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10.09 15.59L11.5 17l5-5-5-5-1.41 1.41L12.67 11H3v2h9.67l-2.58 2.59zM19 3H5c-1.11 0-2 .9-2 2v4h2V5h14v14H5v-4H3v4c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/></svg>
-                        <div>
-                            <h3>Más que un Proveedor, un Socio</h3>
-                            <p>Nos integramos a su operación para ser un verdadero socio tecnológico. Nuestro enfoque proactivo se centra en optimizar sus sistemas para que su tecnología sea siempre una palanca para el crecimiento.</p>
-                        </div>
+                <h2 class="section-title">Empresas que Confían en Nosotros</h2>
+                
+                <div class="clientes-slider">
+                    <div class="clientes-slide-track">
+                        <div class="cliente-slide"><img src="https://makitpublicdata.blob.core.windows.net/makitpublicdata/CCC_logo.png" alt="Logo Caracas Country Club"></div>
+                        <div class="cliente-slide"><img src="https://makitpublicdata.blob.core.windows.net/makitpublicdata/Inmuno21_logo.png" alt="Logo Laboratorio Inmuno 21"></div>
+                        <div class="cliente-slide"><img src="https://makitpublicdata.blob.core.windows.net/makitpublicdata/Rutaca_logo.png" alt="Logo RUTACA Airlines"></div>
+                        <div class="cliente-slide"><img src="https://makitpublicdata.blob.core.windows.net/makitpublicdata/Aerocaribe_logo.png" alt="Logo Aerocaribe"></div>
+                        <div class="cliente-slide"><img src="https://makitpublicdata.blob.core.windows.net/makitpublicdata/Zulimilk_logo.png" alt="Logo Zulimilk"></div>
+                        <div class="cliente-slide"><img src="https://makitpublicdata.blob.core.windows.net/makitpublicdata/DICAM_logo.png" alt="Logo DICAM"></div>
+
+                        <div class="cliente-slide"><img src="https://makitpublicdata.blob.core.windows.net/makitpublicdata/CCC_logo.png" alt="Logo Caracas Country Club"></div>
+                        <div class="cliente-slide"><img src="https://makitpublicdata.blob.core.windows.net/makitpublicdata/Inmuno21_logo.png" alt="Logo Laboratorio Inmuno 21"></div>
+                        <div class="cliente-slide"><img src="https://makitpublicdata.blob.core.windows.net/makitpublicdata/Rutaca_logo.png" alt="Logo RUTACA Airlines"></div>
+                        <div class="cliente-slide"><img src="https://makitpublicdata.blob.core.windows.net/makitpublicdata/Aerocaribe_logo.png" alt="Logo Aerocaribe"></div>
+                        <div class="cliente-slide"><img src="https://makitpublicdata.blob.core.windows.net/makitpublicdata/Zulimilk_logo.png" alt="Logo Zulimilk"></div>
+                        <div class="cliente-slide"><img src="https://makitpublicdata.blob.core.windows.net/makitpublicdata/DICAM_logo.png" alt="Logo DICAM"></div>
                     </div>
                 </div>
             </div>
         </section>
-
         <section id="partners" class="partners-section-light">
             <div class="container">
                 <h2 class="section-title">Nuestras Alianzas Estratégicas</h2>
