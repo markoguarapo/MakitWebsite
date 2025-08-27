@@ -590,3 +590,136 @@ footer p strong {
 .cta-oferta .btn {
     margin-top: 1.5rem;
 }
+/* --- Sección de Casos de Éxito --- */
+.case-study-section {
+    background: var(--bg-color); /* Fondo oscuro principal */
+    padding: 5rem 0;
+}
+
+.case-study-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Por ahora una sola columna */
+    gap: 2rem;
+    justify-items: center; /* Centra la tarjeta */
+}
+
+.case-study-card {
+    background: var(--surface-color);
+    border-radius: 10px;
+    border: 1px solid #333;
+    padding: 2.5rem;
+    max-width: 700px; /* Ancho máximo de la tarjeta */
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.case-study-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.case-study-card-logo {
+    max-height: 70px;
+    margin-bottom: 1.5rem;
+}
+
+.case-study-card-title {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.case-study-card-summary {
+    opacity: 0.8;
+    margin-bottom: 2rem;
+}
+/* ========================================================= */
+/* ===      ESTILOS PARA PÁGINAS DE CASOS DE ÉXITO       === */
+/* ========================================================= */
+.case-study-hero {
+    padding: 150px 0 50px 0;
+    text-align: center;
+    background: var(--surface-color);
+}
+.case-study-logo {
+    max-height: 80px;
+    margin-bottom: 2rem;
+}
+.case-study-hero h1 {
+    color: var(--primary-color);
+    font-size: 3rem;
+}
+.case-study-subtitle {
+    font-size: 1.2rem;
+    color: var(--accent-color);
+    font-weight: 600;
+}
+.case-study-content {
+    padding: 5rem 0;
+}
+.case-study-content .container {
+    max-width: 800px; /* Hacemos el contenido más angosto para facilitar la lectura */
+}
+.case-study-content h2 {
+    color: var(--primary-color);
+    font-size: 2rem;
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+    border-left: 4px solid var(--accent-color);
+    padding-left: 1rem;
+}
+.case-study-content p {
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+}
+.testimonial-box {
+    background: var(--surface-color);
+    border-left: 4px solid var(--accent-color);
+    padding: 2rem;
+    border-radius: 8px;
+    margin-bottom: 3rem;
+}
+.testimonial-quote {
+    font-size: 1.2rem;
+    font-style: italic;
+    font-weight: 300;
+    margin-bottom: 1rem !important; /* Importante para sobreescribir otros P */
+}
+.testimonial-author {
+    font-weight: 600;
+    color: var(--primary-color);
+}
+.results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+}
+.result-card {
+    background: var(--surface-color);
+    padding: 2rem;
+    text-align: center;
+    border-radius: 8px;
+}
+.result-number {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--accent-color);
+    line-height: 1.1;
+}
+.result-description {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+.case-study-cta {
+    text-align: center;
+    background: var(--surface-color);
+    padding: 3rem;
+    border-radius: 10px;
+    margin-top: 4rem;
+}
+.case-study-cta h3 {
+    color: var(--primary-color);
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
