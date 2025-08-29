@@ -705,7 +705,7 @@ footer p strong {
 }
 .results-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Aumentamos el ancho mínimo de cada tarjeta */
     gap: 2rem;
     margin: 3rem 0;
 }
@@ -720,6 +720,11 @@ footer p strong {
     font-weight: 700;
     color: var(--accent-color);
     line-height: 1.1;
+}
+.result-number.is-text {
+    font-size: 2.5rem; /* Un tamaño de fuente más manejable para palabras */
+    line-height: 1.2;
+    max-width: 350px
 }
 .result-description {
     font-size: 0.9rem;
