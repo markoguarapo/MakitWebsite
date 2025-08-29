@@ -597,10 +597,10 @@ footer p strong {
 }
 
 .case-study-grid {
-    display: grid;
-    grid-template-columns: 1fr; /* Por ahora una sola columna */
+    display: flex; /* Cambiamos a flexbox */
+    flex-wrap: wrap; /* Permitimos que las tarjetas se ajusten */
+    justify-content: center; /* Centramos las tarjetas */
     gap: 2rem;
-    justify-items: center; /* Centra la tarjeta */
 }
 
 .case-study-card {
@@ -608,11 +608,24 @@ footer p strong {
     border-radius: 10px;
     border: 1px solid #333;
     padding: 2.5rem;
-    max-width: 700px; /* Ancho máximo de la tarjeta */
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    flex: 1 1 400px; /* Le damos una base flexible */
+    max-width: 500px; /* Limitamos su tamaño máximo */
 }
 
+.case-study-card-logo {
+    max-width: 180px;  /* Límite de ancho para el logo */
+    max-height: 70px;   /* Límite de alto para el logo */
+    width: auto;        /* Mantiene la proporción */
+}
+.case-study-logo-container {
+    height: 90px; /* Altura fija para el contenedor del logo */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem; /* Mantenemos el espacio inferior */
+}
 .case-study-card:hover {
     transform: translateY(-10px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
@@ -643,6 +656,7 @@ footer p strong {
 }
 .case-study-logo {
     max-height: 80px;
+    max-width: 180px;
     margin-bottom: 2rem;
 }
 .case-study-hero h1 {
